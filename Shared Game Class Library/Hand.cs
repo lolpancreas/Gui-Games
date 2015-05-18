@@ -12,8 +12,8 @@ namespace Shared_Game_Class_Library
     public class Hand 
     {
         Card card = new Card();
-
-        List<Card> hand;
+        
+        public List<Card> handPile = new List<Card>();
         
         
        
@@ -22,6 +22,7 @@ namespace Shared_Game_Class_Library
 
         public Hand()
         {
+            
         }
 
         public Hand(List<Card> card){
@@ -38,9 +39,12 @@ namespace Shared_Game_Class_Library
         }
 
         public void AddCard(Card card){
-            
-          hand.Add(card);
-           
+
+            handPile.Add(card);
+            //cards.Add(card);
+
+           // handPile.Add(card);
+         
 
 
         }
@@ -86,6 +90,11 @@ namespace Shared_Game_Class_Library
         public IEnumerator<Card> GetEnumerator()
         {
             return cards.GetEnumerator();
+        }
+
+        public List<Card> returnHand()
+        {
+            return handPile;
         }
 
 

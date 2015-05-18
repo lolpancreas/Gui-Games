@@ -21,3 +21,17 @@ F:\Uni\CAB201\Gui Games\Gui Games\Gui Games\bin\Debug\Game_Class_Library.pdb
 F:\Uni\CAB201\Gui Games\Gui Games\Gui Games\bin\Debug\Shared Game Class Library.pdb
 F:\Uni\CAB201\Gui Games\Gui Games\Gui Games\bin\Debug\Game_Class_Library.dll
 F:\Uni\CAB201\Gui Games\Gui Games\Gui Games\bin\Debug\Shared Game Class Library.dll
+C:\Users\Jacob\Downloads\Gui-Games-master\Gui-Games-master\Gui Games\bin\Debug\Gui Games.exe.config
+C:\Users\Jacob\Downloads\Gui-Games-master\Gui-Games-master\Gui Games\obj\Debug\Gui Games.exe
+C:\Users\Jacob\Downloads\Gui-Games-master\Gui-Games-master\Gui Games\obj\Debug\Gui Games.pdb
+C:\Users\Jacob\Downloads\Gui-Games-master\Gui-Games-master\Gui Games\bin\Debug\Gui Games.exe
+C:\Users\Jacob\Downloads\Gui-Games-master\Gui-Games-master\Gui Games\bin\Debug\Gui Games.pdb
+C:\Users\Jacob\Downloads\Gui-Games-master\Gui-Games-master\Gui Games\bin\Debug\Game_Class_Library.dll
+C:\Users\Jacob\Downloads\Gui-Games-master\Gui-Games-master\Gui Games\bin\Debug\Shared Game Class Library.dll
+C:\Users\Jacob\Downloads\Gui-Games-master\Gui-Games-master\Gui Games\bin\Debug\Game_Class_Library.pdb
+C:\Users\Jacob\Downloads\Gui-Games-master\Gui-Games-master\Gui Games\bin\Debug\Shared Game Class Library.pdb
+C:\Users\Jacob\Downloads\Gui-Games-master\Gui-Games-master\Gui Games\obj\Debug\Gui Games.csprojResolveAssemblyReference.cache
+C:\Users\Jacob\Downloads\Gui-Games-master\Gui-Games-master\Gui Games\obj\Debug\Gui_Games.CrazyEightsForm.resources
+C:\Users\Jacob\Downloads\Gui-Games-master\Gui-Games-master\Gui Games\obj\Debug\Gui_Games.Start_Game_Form.resources
+C:\Users\Jacob\Downloads\Gui-Games-master\Gui-Games-master\Gui Games\obj\Debug\Gui_Games.Properties.Resources.resources
+C:\Users\Jacob\Downloads\Gui-Games-master\Gui-Games-master\Gui Games\obj\Debug\Gui Games.csproj.GenerateResource.Cache

@@ -30,7 +30,7 @@ namespace Shared_Game_Class_Library
 
         public CardPile()
         {
-
+           // List<Card> pile = new List<Card>();
         }
 
         public void CardPileBool(bool newPile)
@@ -84,15 +84,21 @@ namespace Shared_Game_Class_Library
         public Card DealOneCard(){
 
            // pile.Remove(card);
-           // hand.AddCard(card);      
+           // hand.AddCard(card);  
+
+            int index = 0;
            
-            return testPile[0];
+            return testPile[index++];
             
          }
 
         public List<Card> DealCards(int cards)
         {
-            return pile;
+            testPile.RemoveRange(0, cards);
+            hand.AddCard(card);
+
+            
+            return testPile;
         }
 
 

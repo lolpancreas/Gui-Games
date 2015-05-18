@@ -15,9 +15,10 @@ namespace Gui_Games
     public partial class CrazyEightsForm : Form
     {
         Card card = new Card(Suit.Diamonds, FaceValue.King);
-        Hand hand = new Hand();
+        Hand handPile = new Hand();
         CardPile cardPile = new CardPile();
         //List<Card> pile = new List<Card>();
+        Size pictureBoxSize = new Size(72, 95);
         
          
         
@@ -38,6 +39,8 @@ namespace Gui_Games
             
             cardPile.CardPileBool(true);
             label_Instructions.Text = "Click Deal to start the game.";
+            MessageBox.Show("There are " + cardPile.testPile.Count.ToString() + " cards currently in the deck");
+
             
             
             
@@ -56,15 +59,17 @@ namespace Gui_Games
 
         private void button_Deal_Click(object sender, EventArgs e)
         {
-            
-            pb_DrawPile.BackgroundImage = null;
-          
-            List<Card> pile = cardPile.DealCards(8);
-
-            Card dealtCard = cardPile.DealOneCard();
             button_SortHand.Enabled = true;
             button_Deal.Enabled = false;
             label_Instructions.Text = "";
+            pb_DrawPile.BackgroundImage = null;
+          
+            
+
+
+
+            
+            
             
             
             
@@ -74,26 +79,43 @@ namespace Gui_Games
             
            
 
-           // panel_computer.BackgroundImage = Images.GetCardImage(card);
-
-           //foreach (Card card in pile)        
+           
+            // Deals Computer's hand
             for (int i = 1; i <= 8; i++)
             {
-                Size pictureBoxSize = new Size(72, 95);
+                Card dealtCard = cardPile.DealOneCard();
+               // List<Card> pile = cardPile.DealCards(1);
+                MessageBox.Show("There are " + cardPile.testPile.Count.ToString() + " cards currently in the deck");
+
                 PictureBox computerCard = new PictureBox();
-                PictureBox playerCard = new PictureBox();
-                playerCard.Size = pictureBoxSize;
                 computerCard.Size = pictureBoxSize;
 
+                computerCard.BackgroundImage = Images.GetCardImage(dealtCard);
+                panel_computer.Controls.Add(computerCard);
+            }
+
+           // Deals Player's hand       
+            for (int i = 1; i <= 8; i++)
+            {
+                Card dealtCard = cardPile.DealOneCard();
+                List<Card> pile = cardPile.DealCards(1);
+                MessageBox.Show("There are " + cardPile.testPile.Count.ToString() + " cards currently in the deck");
+
+                PictureBox playerCard = new PictureBox();
+                playerCard.Size = pictureBoxSize;
+
+
+                List<Card> hand = handPile.returnHand();
                 
+                hand = cardPile.DealCards(1);
+                
+                MessageBox.Show("There are " + hand.Count.ToString() + " cards currently in your hand");
+                           
                 panel_Player.Controls.Add(playerCard);
                 playerCard.BackgroundImage = Images.GetCardImage(dealtCard);
 
                 
-                computerCard.BackgroundImage = Images.GetCardImage(dealtCard);
-                panel_computer.Controls.Add(computerCard);
-                
-                
+                           
             }
             
 
