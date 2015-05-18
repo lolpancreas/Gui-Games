@@ -38,8 +38,8 @@ namespace Shared_Game_Class_Library
         public Card(Suit inputSuit, FaceValue inputfaceValue){
 
 
-            suit = suit++;
-            faceValue = faceValue++;
+            suit = inputSuit;
+            faceValue = inputfaceValue;
                  
             
         }
@@ -48,7 +48,7 @@ namespace Shared_Game_Class_Library
         {
             
             return faceValue;
-;
+
         }
 
         public Suit GetSuit()

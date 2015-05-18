@@ -64,33 +64,18 @@ namespace Gui_Games
             label_Instructions.Text = "";
             pb_DrawPile.BackgroundImage = null;
           
-            
-
-
-
-            
-            
-            
-            
-            
-            
-            
-            
-            
-           
-
            
             // Deals Computer's hand
             for (int i = 1; i <= 8; i++)
             {
                 Card dealtCard = cardPile.DealOneCard();
-               // List<Card> pile = cardPile.DealCards(1);
+                List<Card> pile = cardPile.DealCards(1);
                 MessageBox.Show("There are " + cardPile.testPile.Count.ToString() + " cards currently in the deck");
 
                 PictureBox computerCard = new PictureBox();
                 computerCard.Size = pictureBoxSize;
 
-                computerCard.BackgroundImage = Images.GetCardImage(dealtCard);
+                computerCard.BackgroundImage = Images.GetCardImage(card);
                 panel_computer.Controls.Add(computerCard);
             }
 
@@ -105,17 +90,15 @@ namespace Gui_Games
                 playerCard.Size = pictureBoxSize;
 
 
-                List<Card> hand = handPile.returnHand();
+               // List<Card> hand = handPile.returnHand();
                 
-                hand = cardPile.DealCards(1);
+               // hand = cardPile.DealCards(1);
+                handPile.returnHand().Add(dealtCard);
                 
-                MessageBox.Show("There are " + hand.Count.ToString() + " cards currently in your hand");
+                MessageBox.Show("There are " + handPile.returnHand().Count.ToString() + " cards currently in the Player's hand");
                            
                 panel_Player.Controls.Add(playerCard);
-                playerCard.BackgroundImage = Images.GetCardImage(dealtCard);
-
-                
-                           
+                playerCard.BackgroundImage = Images.GetCardImage(dealtCard);                                           
             }
             
 

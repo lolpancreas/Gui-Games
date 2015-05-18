@@ -42,17 +42,11 @@ namespace Shared_Game_Class_Library
                 for (int i = 1; i <= 52; i++ )
                 {
                     testPile.Add(testCard);
-                    
-                    
-
-
-                    
+                       
                 }
                 
 
-             //   for (int i = 1; i < 52; i++)
-             //   {                                                  
-             //  }
+             
 
             }
             else
@@ -95,7 +89,8 @@ namespace Shared_Game_Class_Library
         public List<Card> DealCards(int cards)
         {
             testPile.RemoveRange(0, cards);
-            hand.AddCard(card);
+            
+            hand.AddCard(testCard);
 
             
             return testPile;
