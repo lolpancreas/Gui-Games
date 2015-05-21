@@ -1,6 +1,6 @@
 ﻿namespace Gui_Games
 {
-    partial class CrazyEightsForm
+    partial class Crazy_Eights_Game
     {
         /// <summary>
         /// Required designer variable.
@@ -28,169 +28,177 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label_Computer = new System.Windows.Forms.Label();
-            this.label_Player = new System.Windows.Forms.Label();
-            this.button_Deal = new System.Windows.Forms.Button();
-            this.button_SortHand = new System.Windows.Forms.Button();
-            this.button_CancelGame = new System.Windows.Forms.Button();
-            this.label_Instructions = new System.Windows.Forms.Label();
-            this.panel_Player = new System.Windows.Forms.TableLayoutPanel();
-            this.panel_computer = new System.Windows.Forms.TableLayoutPanel();
-            this.pb_DiscardPile = new System.Windows.Forms.PictureBox();
-            this.pb_DrawPile = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pb_DiscardPile)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pb_DrawPile)).BeginInit();
+            this.InstructionLabel = new System.Windows.Forms.Label();
+            this.DrawPilePictureBox = new System.Windows.Forms.PictureBox();
+            this.DiscardPilePictureBox = new System.Windows.Forms.PictureBox();
+            this.ComputerHandTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.PlayerHandTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.PlayerLabel = new System.Windows.Forms.Label();
+            this.ComputerLabel = new System.Windows.Forms.Label();
+            this.CancelButton = new System.Windows.Forms.Button();
+            this.DealButton = new System.Windows.Forms.Button();
+            this.SortButton = new System.Windows.Forms.Button();
+            this.testDrawPileLabel = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.DrawPilePictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DiscardPilePictureBox)).BeginInit();
             this.SuspendLayout();
             // 
-            // label_Computer
+            // InstructionLabel
             // 
-            this.label_Computer.AutoSize = true;
-            this.label_Computer.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_Computer.Location = new System.Drawing.Point(253, 9);
-            this.label_Computer.Name = "label_Computer";
-            this.label_Computer.Size = new System.Drawing.Size(105, 25);
-            this.label_Computer.TabIndex = 0;
-            this.label_Computer.Text = "Computer";
+            this.InstructionLabel.Location = new System.Drawing.Point(410, 184);
+            this.InstructionLabel.Name = "InstructionLabel";
+            this.InstructionLabel.Size = new System.Drawing.Size(163, 46);
+            this.InstructionLabel.TabIndex = 0;
+            this.InstructionLabel.Text = "Click Deal to start the game";
+            this.InstructionLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // label_Player
+            // DrawPilePictureBox
             // 
-            this.label_Player.AutoSize = true;
-            this.label_Player.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_Player.Location = new System.Drawing.Point(285, 396);
-            this.label_Player.Name = "label_Player";
-            this.label_Player.Size = new System.Drawing.Size(73, 25);
-            this.label_Player.TabIndex = 1;
-            this.label_Player.Text = "Player";
+            this.DrawPilePictureBox.Enabled = false;
+            this.DrawPilePictureBox.Location = new System.Drawing.Point(181, 160);
+            this.DrawPilePictureBox.Name = "DrawPilePictureBox";
+            this.DrawPilePictureBox.Size = new System.Drawing.Size(72, 95);
+            this.DrawPilePictureBox.TabIndex = 1;
+            this.DrawPilePictureBox.TabStop = false;
+            this.DrawPilePictureBox.Click += new System.EventHandler(this.DrawPilePictureBox_Click);
             // 
-            // button_Deal
+            // DiscardPilePictureBox
             // 
-            this.button_Deal.Location = new System.Drawing.Point(60, 410);
-            this.button_Deal.Name = "button_Deal";
-            this.button_Deal.Size = new System.Drawing.Size(75, 23);
-            this.button_Deal.TabIndex = 2;
-            this.button_Deal.Text = "Deal";
-            this.button_Deal.UseVisualStyleBackColor = true;
-            this.button_Deal.Click += new System.EventHandler(this.button_Deal_Click);
+            this.DiscardPilePictureBox.Location = new System.Drawing.Point(296, 160);
+            this.DiscardPilePictureBox.Name = "DiscardPilePictureBox";
+            this.DiscardPilePictureBox.Size = new System.Drawing.Size(72, 95);
+            this.DiscardPilePictureBox.TabIndex = 2;
+            this.DiscardPilePictureBox.TabStop = false;
             // 
-            // button_SortHand
+            // ComputerHandTableLayoutPanel
             // 
-            this.button_SortHand.Enabled = false;
-            this.button_SortHand.Location = new System.Drawing.Point(239, 445);
-            this.button_SortHand.Name = "button_SortHand";
-            this.button_SortHand.Size = new System.Drawing.Size(119, 23);
-            this.button_SortHand.TabIndex = 3;
-            this.button_SortHand.Text = "Sort Player\'s Hand";
-            this.button_SortHand.UseVisualStyleBackColor = true;
+            this.ComputerHandTableLayoutPanel.ColumnCount = 13;
+            this.ComputerHandTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
+            this.ComputerHandTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
+            this.ComputerHandTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
+            this.ComputerHandTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
+            this.ComputerHandTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
+            this.ComputerHandTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
+            this.ComputerHandTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
+            this.ComputerHandTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
+            this.ComputerHandTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
+            this.ComputerHandTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
+            this.ComputerHandTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
+            this.ComputerHandTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
+            this.ComputerHandTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
+            this.ComputerHandTableLayoutPanel.Location = new System.Drawing.Point(16, 44);
+            this.ComputerHandTableLayoutPanel.Name = "ComputerHandTableLayoutPanel";
+            this.ComputerHandTableLayoutPanel.RowCount = 1;
+            this.ComputerHandTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.ComputerHandTableLayoutPanel.Size = new System.Drawing.Size(572, 95);
+            this.ComputerHandTableLayoutPanel.TabIndex = 3;
             // 
-            // button_CancelGame
+            // PlayerHandTableLayoutPanel
             // 
-            this.button_CancelGame.Location = new System.Drawing.Point(517, 410);
-            this.button_CancelGame.Name = "button_CancelGame";
-            this.button_CancelGame.Size = new System.Drawing.Size(75, 23);
-            this.button_CancelGame.TabIndex = 4;
-            this.button_CancelGame.Text = "Cancel Game";
-            this.button_CancelGame.UseVisualStyleBackColor = true;
-            this.button_CancelGame.Click += new System.EventHandler(this.button_CancelGame_Click);
+            this.PlayerHandTableLayoutPanel.ColumnCount = 13;
+            this.PlayerHandTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
+            this.PlayerHandTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
+            this.PlayerHandTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
+            this.PlayerHandTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
+            this.PlayerHandTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
+            this.PlayerHandTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
+            this.PlayerHandTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
+            this.PlayerHandTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
+            this.PlayerHandTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
+            this.PlayerHandTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
+            this.PlayerHandTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
+            this.PlayerHandTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
+            this.PlayerHandTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
+            this.PlayerHandTableLayoutPanel.Location = new System.Drawing.Point(16, 280);
+            this.PlayerHandTableLayoutPanel.Name = "PlayerHandTableLayoutPanel";
+            this.PlayerHandTableLayoutPanel.RowCount = 1;
+            this.PlayerHandTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.PlayerHandTableLayoutPanel.Size = new System.Drawing.Size(572, 95);
+            this.PlayerHandTableLayoutPanel.TabIndex = 4;
             // 
-            // label_Instructions
+            // PlayerLabel
             // 
-            this.label_Instructions.AutoSize = true;
-            this.label_Instructions.BackColor = System.Drawing.Color.White;
-            this.label_Instructions.Location = new System.Drawing.Point(411, 195);
-            this.label_Instructions.Name = "label_Instructions";
-            this.label_Instructions.Size = new System.Drawing.Size(181, 39);
-            this.label_Instructions.TabIndex = 9;
-            this.label_Instructions.Text = "\r\n                                                          \r\n\r\n";
-            this.label_Instructions.Click += new System.EventHandler(this.label_Instructions_Click);
+            this.PlayerLabel.AutoSize = true;
+            this.PlayerLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PlayerLabel.Location = new System.Drawing.Point(232, 378);
+            this.PlayerLabel.Name = "PlayerLabel";
+            this.PlayerLabel.Size = new System.Drawing.Size(81, 29);
+            this.PlayerLabel.TabIndex = 6;
+            this.PlayerLabel.Text = "Player";
             // 
-            // panel_Player
+            // ComputerLabel
             // 
-            this.panel_Player.AutoSize = true;
-            this.panel_Player.ColumnCount = 13;
-            this.panel_Player.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
-            this.panel_Player.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
-            this.panel_Player.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
-            this.panel_Player.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
-            this.panel_Player.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
-            this.panel_Player.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
-            this.panel_Player.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
-            this.panel_Player.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
-            this.panel_Player.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
-            this.panel_Player.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
-            this.panel_Player.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
-            this.panel_Player.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
-            this.panel_Player.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
-            this.panel_Player.Location = new System.Drawing.Point(22, 279);
-            this.panel_Player.Name = "panel_Player";
-            this.panel_Player.RowCount = 1;
-            this.panel_Player.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.panel_Player.Size = new System.Drawing.Size(570, 95);
-            this.panel_Player.TabIndex = 8;
-            this.panel_Player.Paint += new System.Windows.Forms.PaintEventHandler(this.panel_Player_Paint);
-            this.panel_Player.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel_Player_MouseClick);
+            this.ComputerLabel.AutoSize = true;
+            this.ComputerLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ComputerLabel.Location = new System.Drawing.Point(228, 8);
+            this.ComputerLabel.Name = "ComputerLabel";
+            this.ComputerLabel.Size = new System.Drawing.Size(119, 29);
+            this.ComputerLabel.TabIndex = 5;
+            this.ComputerLabel.Text = "Computer";
             // 
-            // panel_computer
+            // CancelButton
             // 
-            this.panel_computer.AutoSize = true;
-            this.panel_computer.ColumnCount = 13;
-            this.panel_computer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
-            this.panel_computer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
-            this.panel_computer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
-            this.panel_computer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
-            this.panel_computer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
-            this.panel_computer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
-            this.panel_computer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
-            this.panel_computer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
-            this.panel_computer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
-            this.panel_computer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
-            this.panel_computer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
-            this.panel_computer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
-            this.panel_computer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
-            this.panel_computer.Location = new System.Drawing.Point(17, 50);
-            this.panel_computer.Name = "panel_computer";
-            this.panel_computer.RowCount = 1;
-            this.panel_computer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.panel_computer.Size = new System.Drawing.Size(570, 95);
-            this.panel_computer.TabIndex = 8;
-            this.panel_computer.Paint += new System.Windows.Forms.PaintEventHandler(this.panel_computer_Paint);
+            this.CancelButton.Location = new System.Drawing.Point(495, 413);
+            this.CancelButton.Name = "CancelButton";
+            this.CancelButton.Size = new System.Drawing.Size(93, 34);
+            this.CancelButton.TabIndex = 17;
+            this.CancelButton.Text = "Cancel Game";
+            this.CancelButton.UseVisualStyleBackColor = true;
+            this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
             // 
-            // pb_DiscardPile
+            // DealButton
             // 
-            this.pb_DiscardPile.Location = new System.Drawing.Point(303, 163);
-            this.pb_DiscardPile.Name = "pb_DiscardPile";
-            this.pb_DiscardPile.Size = new System.Drawing.Size(70, 95);
-            this.pb_DiscardPile.TabIndex = 6;
-            this.pb_DiscardPile.TabStop = false;
+            this.DealButton.Location = new System.Drawing.Point(16, 413);
+            this.DealButton.Name = "DealButton";
+            this.DealButton.Size = new System.Drawing.Size(93, 34);
+            this.DealButton.TabIndex = 18;
+            this.DealButton.Text = "Deal";
+            this.DealButton.UseVisualStyleBackColor = true;
+            this.DealButton.Click += new System.EventHandler(this.DealButton_Click);
             // 
-            // pb_DrawPile
+            // SortButton
             // 
-            this.pb_DrawPile.Location = new System.Drawing.Point(166, 163);
-            this.pb_DrawPile.Name = "pb_DrawPile";
-            this.pb_DrawPile.Size = new System.Drawing.Size(70, 95);
-            this.pb_DrawPile.TabIndex = 5;
-            this.pb_DrawPile.TabStop = false;
+            this.SortButton.Enabled = false;
+            this.SortButton.Location = new System.Drawing.Point(220, 413);
+            this.SortButton.Name = "SortButton";
+            this.SortButton.Size = new System.Drawing.Size(93, 34);
+            this.SortButton.TabIndex = 19;
+            this.SortButton.Text = "Sort Cards";
+            this.SortButton.UseVisualStyleBackColor = true;
+            this.SortButton.Click += new System.EventHandler(this.SortButton_Click);
             // 
-            // CrazyEightsForm
+            // testDrawPileLabel
+            // 
+            this.testDrawPileLabel.AutoSize = true;
+            this.testDrawPileLabel.Location = new System.Drawing.Point(38, 216);
+            this.testDrawPileLabel.Name = "testDrawPileLabel";
+            this.testDrawPileLabel.Size = new System.Drawing.Size(35, 13);
+            this.testDrawPileLabel.TabIndex = 20;
+            this.testDrawPileLabel.Text = "label1";
+            this.testDrawPileLabel.Visible = false;
+            // 
+            // Crazy_Eights_Game
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(693, 505);
-            this.Controls.Add(this.label_Instructions);
-            this.Controls.Add(this.panel_Player);
-            this.Controls.Add(this.panel_computer);
-            this.Controls.Add(this.pb_DiscardPile);
-            this.Controls.Add(this.pb_DrawPile);
-            this.Controls.Add(this.button_CancelGame);
-            this.Controls.Add(this.button_SortHand);
-            this.Controls.Add(this.button_Deal);
-            this.Controls.Add(this.label_Player);
-            this.Controls.Add(this.label_Computer);
-            this.Name = "CrazyEightsForm";
-            this.Text = "Form1";
-            this.Load += new System.EventHandler(this.CrazyEightsForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pb_DiscardPile)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pb_DrawPile)).EndInit();
+            this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
+            this.ClientSize = new System.Drawing.Size(604, 459);
+            this.Controls.Add(this.testDrawPileLabel);
+            this.Controls.Add(this.SortButton);
+            this.Controls.Add(this.DealButton);
+            this.Controls.Add(this.CancelButton);
+            this.Controls.Add(this.PlayerLabel);
+            this.Controls.Add(this.ComputerLabel);
+            this.Controls.Add(this.PlayerHandTableLayoutPanel);
+            this.Controls.Add(this.ComputerHandTableLayoutPanel);
+            this.Controls.Add(this.DiscardPilePictureBox);
+            this.Controls.Add(this.DrawPilePictureBox);
+            this.Controls.Add(this.InstructionLabel);
+            this.Name = "Crazy_Eights_Game";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Crazy Eights";
+            ((System.ComponentModel.ISupportInitialize)(this.DrawPilePictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DiscardPilePictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -198,16 +206,17 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label_Computer;
-        private System.Windows.Forms.Label label_Player;
-        private System.Windows.Forms.Button button_Deal;
-        private System.Windows.Forms.Button button_SortHand;
-        private System.Windows.Forms.Button button_CancelGame;
-        private System.Windows.Forms.PictureBox pb_DrawPile;
-        private System.Windows.Forms.PictureBox pb_DiscardPile;
-        private System.Windows.Forms.TableLayoutPanel panel_computer;
-        private System.Windows.Forms.TableLayoutPanel panel_Player;
-        private System.Windows.Forms.Label label_Instructions;
+        private System.Windows.Forms.Label InstructionLabel;
+        private System.Windows.Forms.PictureBox DiscardPilePictureBox;
+        private System.Windows.Forms.TableLayoutPanel ComputerHandTableLayoutPanel;
+        private System.Windows.Forms.TableLayoutPanel PlayerHandTableLayoutPanel;
+        private System.Windows.Forms.Label PlayerLabel;
+        private System.Windows.Forms.Label ComputerLabel;
+        private System.Windows.Forms.Button CancelButton;
+        private System.Windows.Forms.Button DealButton;
+        private System.Windows.Forms.Button SortButton;
+        private System.Windows.Forms.PictureBox DrawPilePictureBox;
+        private System.Windows.Forms.Label testDrawPileLabel;
 
     }
 }

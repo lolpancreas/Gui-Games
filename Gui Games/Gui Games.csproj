@@ -38,7 +38,7 @@
     </Reference>
     <Reference Include="Shared Game Class Library, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Shared Game Class Library\bin\Debug\Shared Game Class Library.dll</HintPath>
+      <HintPath>bin\Debug\Shared Game Class Library.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -98,6 +98,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Game_Class_Library.dll" />
     <Content Include="Images\Cards\CardBack_Blue.png" />
     <Content Include="Images\Cards\CardBack_Red.png" />
     <Content Include="Images\Cards\ClubAce.png" />

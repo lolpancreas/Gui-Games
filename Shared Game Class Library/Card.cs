@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Game_Class_Library;
+using Shared_Game_Class_Library;
 
 
 namespace Shared_Game_Class_Library
@@ -25,67 +25,44 @@ namespace Shared_Game_Class_Library
         public Suit suit;
         public Card card;
 
-       
-         
-        
-
-        public Card()
-        {
-            
-            
-        }
-        
-        public Card(Suit inputSuit, FaceValue inputfaceValue){
-
-
-            suit = inputSuit;
-            faceValue = inputfaceValue;
-                 
-            
+        public Card(){    
         }
 
-        public FaceValue GetFaceValue()
+        public Card(Suit suit, FaceValue faceValue)
         {
-            
+            this.suit = suit;
+            this.faceValue = faceValue;
+        }
+
+        public FaceValue GetFaceValue(){           
             return faceValue;
-
         }
 
-        public Suit GetSuit()
-        {
-            
+        public Suit GetSuit(){      
             return suit;
         }
 
         
 
-        public int CompareTo(Card cardCompare)
-        {
-            if (card== cardCompare)
-            {
+        public int CompareTo(Card anotherCard) {
+            if (this.suit < anotherCard.suit) {
                 return -1;
-            }           
-
-            if (card == cardCompare)
-            {
-                return 0;
-            }
-            
-
-
-            if (card == cardCompare)
-            {
+            } else if (this.suit > anotherCard.suit) {
                 return 1;
+            } else {
+                if (this.faceValue < anotherCard.faceValue) {
+                    return -1;
+                } else if (this.faceValue > anotherCard.faceValue) {
+                    return 1;
+                } else {
+                    return 0;
+                }
             }
-
-            return 3;
-
         }
 
 
-        public bool Equals(Card card){
-            return true;
-            
+        public bool Equals(Card anotherCard){
+            return (this.suit == anotherCard.suit && this.faceValue == anotherCard.faceValue);
         }
 
 

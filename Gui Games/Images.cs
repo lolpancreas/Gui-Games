@@ -5,7 +5,6 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Shared_Game_Class_Library;
-using Game_Class_Library;
 
 namespace Gui_Games {
     

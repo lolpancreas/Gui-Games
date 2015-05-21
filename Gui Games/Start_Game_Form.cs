@@ -7,6 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Shared_Game_Class_Library;
+using Gui_Games;
+using Game_Class_Library;
 
 namespace Gui_Games {
     public partial class Start_Game_Form : Form {
@@ -38,8 +41,7 @@ namespace Gui_Games {
         {
             if (chosenGame == "Crazy Eights")
             {
-
-                new CrazyEightsForm().Show();
+                
                 
                   
 

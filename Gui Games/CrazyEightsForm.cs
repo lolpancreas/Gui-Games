@@ -5,136 +5,236 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Diagnostics;
+using System.Threading;
+using Gui_Games;
 using Shared_Game_Class_Library;
 using Game_Class_Library;
 
-namespace Gui_Games
-{
-    public partial class CrazyEightsForm : Form
-    {
-        Card card = new Card(Suit.Diamonds, FaceValue.King);
-        Hand handPile = new Hand();
-        CardPile cardPile = new CardPile();
-        //List<Card> pile = new List<Card>();
-        Size pictureBoxSize = new Size(72, 95);
-        
-         
-        
-        
-        
-        public CrazyEightsForm()
-        {
+
+namespace Gui_Games {
+    /// <summary>
+    /// Provides a GUI for the Crazy Eights game in the SharedGamesClasses.
+    /// </summary>
+    public partial class Crazy_Eights_Game : Form {
+
+
+        public Crazy_Eights_Game() {
             InitializeComponent();
-           //startGameForm.Close();
-                       
-        }
-
-        private void CrazyEightsForm_Load(object sender, EventArgs e)
-        {
-
-            
-            pb_DrawPile.BackgroundImage = Images.GetBackOfCardImage();
-            
-            cardPile.CardPileBool(true);
-            label_Instructions.Text = "Click Deal to start the game.";
-            MessageBox.Show("There are " + cardPile.testPile.Count.ToString() + " cards currently in the deck");
-
-            
-            
-            
+            DrawPilePictureBox.Image = Images.GetBackOfCardImage();          
             
         }
 
-        private void label_Instructions_Click(object sender, EventArgs e)
-        {
 
-        }
+        
 
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-           
-        }
+        private void pictureBox_Click(object sender, EventArgs e) {
+            // Which card was clicked?
+            PictureBox clickedPictureBox = (PictureBox)sender;
+            Card clickedCard = (Card)clickedPictureBox.Tag;
 
-        private void button_Deal_Click(object sender, EventArgs e)
-        {
-            button_SortHand.Enabled = true;
-            button_Deal.Enabled = false;
-            label_Instructions.Text = "";
-            pb_DrawPile.BackgroundImage = null;
-          
-           
-            // Deals Computer's hand
-            for (int i = 1; i <= 8; i++)
+            TryToPlayCard(clickedCard);
+
+            //Change instruction label text
+            if (!Crazy_Eights_Game.CanBePlayed(clickedCard))
             {
-                Card dealtCard = cardPile.DealOneCard();
-                List<Card> pile = cardPile.DealCards(1);
-                MessageBox.Show("There are " + cardPile.testPile.Count.ToString() + " cards currently in the deck");
+                InstructionLabel.Text = "Can't play that card now.";
+                
+            }//end if
+            
+        }
 
-                PictureBox computerCard = new PictureBox();
-                computerCard.Size = pictureBoxSize;
+       
+       
+    
+        private void TryToPlayCard(Card clickedCard) {
+            
 
-                computerCard.BackgroundImage = Images.GetCardImage(card);
-                panel_computer.Controls.Add(computerCard);
-            }
+            // This MessageBox is for debugging purposes only.  
+            // Turn the following line into a comment (//), once sure you can click on cards.
+            //MessageBox.Show(clickedCard.ToString(/*shortFormat*/ false, /*displaySuit*/ true), "Clicked");
+            
+            if (Crazy_Eights_Game.CanBePlayed(clickedCard)) {
+                InstructionLabel.Text = Crazy_Eights_Game.WhichText();
+                //EightGui(clickedCard);
+                Crazy_Eights_Game.PlayCard(clickedCard);
+                DisplayGuiHand(Crazy_Eights_Game.GetHand(Crazy_Eights_Game.USER), PlayerHandTableLayoutPanel, Crazy_Eights_Game.USER);
+                DiscardPilePictureBox.Image = Images.GetCardImage(Crazy_Eights_Game.GetTopCardOnDiscardPile());
 
-           // Deals Player's hand       
-            for (int i = 1; i <= 8; i++)
+                //If card is not eight, set the current suit to the suit of played card.
+                //Otherwise if card is eight, allow player to choose suit.
+                if (clickedCard.GetFaceValue() != FaceValue.Eight) {
+                    Crazy_Eights_Game.SetCurrentSuit(Crazy_Eights_Game.GetTopCardOnDiscardPile().GetSuit());
+                }//end if
+
+                ShowWinner();
+
+                if(!ShowWinner()){
+                    RefreshTheFormThenPause();
+
+                    while (!Crazy_Eights_Game.GetCardHasBeenPlayed())
+                    { //While computer has not yet played card
+                        if (Crazy_Eights_Game.ComputerCanPlay())
+                        { //If computer has playable card
+                            Crazy_Eights_Game.ComputerPlaysCard(); //Computer plays card
+                        } else {
+                            Crazy_Eights_Game.ComputerDraw(); //Otherwise draw a card
+                        }//end if 
+                    }//end while
+
+                    Crazy_Eights_Game.SetCardHasBeenPlayed();
+                    Crazy_Eights_Game.SetCurrentSuit(Crazy_Eights_Game.GetTopCardOnDiscardPile().GetSuit());
+
+                    //Update GUI
+                    DiscardPilePictureBox.Image = Images.GetCardImage(Crazy_Eights_Game.GetTopCardOnDiscardPile());
+                    DisplayGuiHand(Crazy_Eights_Game.GetHand(Crazy_Eights_Game.COMPUTER), ComputerHandTableLayoutPanel, Crazy_Eights_Game.COMPUTER);
+                    ShowWinner();
+
+                    if (Crazy_Eights_Game.PlayerCanDraw())
+                        
+                    {
+                        InstructionLabel.Text = "You have no cards that you can play. You must draw a card.";
+                    }//end if
+                }//end if
+            }//end if
+
+            //Unless the player plays an eight, the suit is set to the suit of whatever card is played.
+            if (Crazy_Eights_Game.GetTopCardOnDiscardPile().GetFaceValue() != FaceValue.Eight)
             {
-                Card dealtCard = cardPile.DealOneCard();
-                List<Card> pile = cardPile.DealCards(1);
-                MessageBox.Show("There are " + cardPile.testPile.Count.ToString() + " cards currently in the deck");
-
-                PictureBox playerCard = new PictureBox();
-                playerCard.Size = pictureBoxSize;
-
-
-               // List<Card> hand = handPile.returnHand();
+                Crazy_Eights_Game.SetCurrentSuit(Crazy_Eights_Game.GetTopCardOnDiscardPile().GetSuit());
                 
-               // hand = cardPile.DealCards(1);
-                handPile.returnHand().Add(dealtCard);
+            }//end if
+
+            DiscardPilePictureBox.Image = Images.GetCardImage(Crazy_Eights_Game.GetTopCardOnDiscardPile());
+        }
+
+        private void CancelButton_Click(object sender, EventArgs e) {
+            Crazy_Eights_Game.Reset();
+            this.Close();
+        }
+
+        private void DealButton_Click(object sender, EventArgs e) {
+            Crazy_Eights_Game.SetUpGame();
+            PlayerHandTableLayoutPanel.Enabled = true;
+
+            if (Crazy_Eights_Game.FirstCardIsEight())
+            {
+                //Allow player to play any card.
+            } else {
+                Crazy_Eights_Game.SetCurrentSuit(Crazy_Eights_Game.GetTopCardOnDiscardPile().GetSuit());
+            }//end if
+
+            //Disable/Enable controls
+            DealButton.Enabled = false;
+            SortButton.Enabled = true;
+            DrawPilePictureBox.Enabled = true;
+
+            //Change instruction label text
+            InstructionLabel.Text = "Your turn. Click on one of your cards to play";
+
+            //Display cards
+            DisplayGuiHand(Crazy_Eights_Game.GetHand(Crazy_Eights_Game.USER), PlayerHandTableLayoutPanel, Crazy_Eights_Game.USER);
+            DisplayGuiHand(Crazy_Eights_Game.GetHand(Crazy_Eights_Game.COMPUTER), ComputerHandTableLayoutPanel, Crazy_Eights_Game.COMPUTER);
+            DiscardPilePictureBox.Image = Images.GetCardImage(Crazy_Eights_Game.GetTopCardOnDiscardPile());
+        }
+
+        private void SortButton_Click(object sender, EventArgs e) {
+            Crazy_Eights_Game.SortHand(Crazy_Eights_Game.USER);
+            DisplayGuiHand(Crazy_Eights_Game.GetHand(Crazy_Eights_Game.USER), PlayerHandTableLayoutPanel, Crazy_Eights_Game.USER);
+        }
+
+        private void DisplayGuiHand(Hand hand, TableLayoutPanel tableLayoutPanel, int person) {
+            tableLayoutPanel.Controls.Clear();  // Remove any cards already being shown.
+
+            foreach (Card card in hand) {
+
+                // Construct a PictureBox object.
+                PictureBox pictureBox = new PictureBox();
+                // Tell the PictureBox to use all the space inside its square.
+                pictureBox.Dock = DockStyle.Fill;
+                // Remove spacing around the PictureBox. (Default is 3 pixels.)
+                pictureBox.Margin = new Padding(0);
+
+                pictureBox.Image = Images.GetCardImage(card);
+
+                // Allow the user to click on a card in their hand.
+                if (person == Crazy_Eights_Game.USER) {
+                    // Set event-handler for Click on this PictureBox.
+                    pictureBox.Click += new EventHandler(pictureBox_Click);
+                    // Tell the PictureBox which Card object it is a picture of.
+                    pictureBox.Tag = card;
+                }
+                // Add the PictureBox object to the tableLayoutPanel.
+                tableLayoutPanel.Controls.Add(pictureBox);
+            }//end DisplayGuiHand
+        }
+
+        private void DrawPilePictureBox_Click(object sender, EventArgs e) {
+            //testDrawPileLabel.Text = Crazy_Eights_Game.CountDrawpile().ToString(); //Used to test TurnoverDrawpile()
+            if (Crazy_Eights_Game.PlayerCanDraw()) {
+                Crazy_Eights_Game.DrawCard();
+            } else {
+                InstructionLabel.Text = "Cannot draw now. You have at least one card you can play.";
+            }//end if
+            DisplayGuiHand(Crazy_Eights_Game.GetHand(Crazy_Eights_Game.USER), PlayerHandTableLayoutPanel, Crazy_Eights_Game.USER);
+            ShowWinner();
+        }
+
+        /// <summary>
+        /// Ends game if winner has been determined.
+        /// </summary>
+        /// <returns>True if there is a winner or if a player has passed</returns>
+        private bool ShowWinner() {
+            if (Crazy_Eights_Game.DetermineWinner() == Crazy_Eights_Game.USER ||
+                Crazy_Eights_Game.DetermineWinner() == Crazy_Eights_Game.COMPUTER ||
+                Crazy_Eights_Game.DetermineTie()) {
                 
-                MessageBox.Show("There are " + handPile.returnHand().Count.ToString() + " cards currently in the Player's hand");
-                           
-                panel_Player.Controls.Add(playerCard);
-                playerCard.BackgroundImage = Images.GetCardImage(dealtCard);                                           
-            }
-            
+                //Disable/enable controls
+                DealButton.Enabled = true;
+                SortButton.Enabled = false;
+                DrawPilePictureBox.Enabled = false;
+                PlayerHandTableLayoutPanel.Enabled = false;
 
+                InstructionLabel.Text = Crazy_Eights_Game.WhichText();
+                Crazy_Eights_Game.Reset();
+                return true;
 
-            
-             // card = cardPile.DealOneCard();
-               
-              // cardPile.DealOneCard();
-              // hand.AddCard(card);
-          //     panel_computer.BackgroundImage = Images.GetCardImage(card);
-           //    
-                
-           
+            } else if (Crazy_Eights_Game.PlayerPass()){ //If player has 13 unplayable cards in hand
+                return true;
+            } else if (Crazy_Eights_Game.ComputerPass()) { //If computer has 13 unplayable cards in hand
+                return true;
+            }else {
+                return false;
+            }//end if
+        }//end ShowWinner
+
+        /// <summary>
+        /// Shows ChooseSuitForm if player has used an eight.
+        /// </summary>
+        /// <param name="chosenCard">Card clicked in player hand.</param>
+        //private void EightGui(Card chosenCard) {
+        //    ChooseSuitForm chooseSuit = new ChooseSuitForm();
+        //    if (Crazy_Eights_Game.PlayerHasEight(chosenCard)) {
+        //        if (chooseSuit.ShowDialog() == DialogResult.OK) {
+        //            Crazy_Eights_Game.SetCurrentSuit(chooseSuit.GetSuit());
+        //        }//end if
+        //    }//end if
+        //}//end EightGui
+
+        private static void RefreshTheFormThenPause() {
+            // Let the form display any recent changes to Controls, such as PictureBoxes.
+            Application.DoEvents();
+
+            // Wait, then continue.
+            const int HALF_SECOND = 500; // milliseconds.
+            Thread.Sleep(HALF_SECOND);
         }
 
-        private void panel_computer_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void button_CancelGame_Click(object sender, EventArgs e)
-        {
-
-            
 
 
-        }
 
-        private void panel_Player_Paint(object sender, PaintEventArgs e)
-        {
 
-        }
 
-        private void panel_Player_MouseClick(object sender, MouseEventArgs e)
-        {
-            
-        }
-    }
-}
+    } //end class Crazy_Eights_GameForm
+} //end namespace

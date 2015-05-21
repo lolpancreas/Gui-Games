@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Game_Class_Library, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Shared Game Class Library\bin\Debug\Game_Class_Library.dll</HintPath>
+    </Reference>
     <Reference Include="Shared Game Class Library, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Shared Game Class Library\bin\Debug\Shared Game Class Library.dll</HintPath>
